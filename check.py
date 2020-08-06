@@ -1,5 +1,5 @@
 import csv
-while True:
+while True:  #input validation
     fileType = input("Please Select a File Type\n 1: CSV\n 2: TSV\n Selection: ")
     try:
         filetype = int(fileType)
@@ -11,9 +11,8 @@ while True:
         continue
     else:
         break
-print(str(fileType))
-fileType = int(fileType)
-if fileType == 1:
+fileType = int(fileType) ##cast file type to int
+if fileType == 1: #assign extension based on file type
     extension = ".csv"
 if fileType == 2:
     extension = ".tsv"
@@ -21,7 +20,6 @@ masterfile = input("Please enter the master file name: ") + extension
 mastercol = int(input("Please enter the column to check (as a number starting from 1): ")) - 1
 checkfile = input("Please input the csv to be checked: ") + extension
 checkcol = int(input("Please enter the column to check (as a number starting from 1): ")) - 1
-checkcol -= 1
 with open(masterfile, 'rb') as master:
     master_indices = dict((r[mastercol], i) for i, r in enumerate(csv.reader(master)))
 
